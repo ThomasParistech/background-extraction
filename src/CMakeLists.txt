@@ -1,4 +1,4 @@
 set(COMMON_SOURCES ${COMMON_SOURCES}
-    ${CMAKE_CURRENT_SOURCE_DIR}/aaa.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/background_extractor.cpp
     PARENT_SCOPE
 )

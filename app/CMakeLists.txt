@@ -1,2 +1,2 @@
-add_executable(capsules_solver ${COMMON_SOURCES} capsules_solver_app.cpp)
-target_link_libraries(capsules_solver ${OpenCV_LIBS} ${Boost_LIBRARIES})
+add_executable(main ${COMMON_SOURCES} main.cpp)
+target_link_libraries(main ${OpenCV_LIBS} ${Boost_LIBRARIES})
