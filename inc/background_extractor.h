@@ -31,7 +31,7 @@ public:
                                  /// define everything as background
         int open_radius;         ///< Kernel size of the morphological opening (Erosion/Dilation). Parts of the mask
                                  /// that are smaller than the kernel size are removed
-        int num_final_dilations; ///< Number of consecutive morphological 3x3 dilations to apply at the end.
+        int num_final_dilations; ///< Number of consecutive morphological 5x5 dilations to apply at the end.
                                  /// Once small areas have been removed, it will let areas grow to make sure the selection
                                  /// isn't too tight
     };

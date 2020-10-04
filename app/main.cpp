@@ -31,11 +31,18 @@ struct Config
 bool parse_command_line(int argc, char *argv[], Config &config)
 {
     const std::string short_program_desc(
-        "aaaaaa\n");
+        "Remove moving objects and extract background from a set of images taken\n"
+        "under the same conditions (camera pose, focus, exposition time ...)\n");
 
     const std::string long_program_desc(
         short_program_desc +
-        "bbbbbbbbb\n");
+        "\nThe app will pause on the first image coming from the input directory.\n"
+        "Adjusting the parameters makes the algorithm decide which part of the \n"
+        "image should be removed.\n"
+        "Once the red areas correspond to the areas to remove, press any key.\n"
+        "Then, the final image appears on the side, made of the pixels coming from\n"
+        "the green areas.\n"
+        "Repeat this step until the final image is entirely filled.\n");
 
     boost_po::options_description options_desc;
     boost_po::options_description base_options("Base options");
