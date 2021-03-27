@@ -21,19 +21,19 @@ public:
 
     struct ProcessingParams
     {
-        ProcessingParams(int blur_radius, int ths, int open_radius, int num_final_dilations);
+        ProcessingParams(int blur_radius, int ths, int open_radius, int num_final_erosions);
 
         void reset();
 
-        int blur_radius;         ///< Blurring kernel size. The larger the radius, the less noisy the mask is
-        int ths;                 ///< Grayscale threshold in [0,255] defining if colors are similar. A very low
-                                 /// threshold will define everything as foreground, while a very large threshold will
-                                 /// define everything as background
-        int open_radius;         ///< Kernel size of the morphological opening (Erosion/Dilation). Parts of the mask
-                                 /// that are smaller than the kernel size are removed
-        int num_final_dilations; ///< Number of consecutive morphological 5x5 dilations to apply at the end.
-                                 /// Once small areas have been removed, it will let areas grow to make sure the selection
-                                 /// isn't too tight
+        int blur_radius;        ///< Blurring kernel size. The larger the radius, the less noisy the mask is
+        int ths;                ///< Grayscale threshold in [0,255] defining if colors are similar. A very low
+                                /// threshold will define everything as foreground, while a very large threshold will
+                                /// define everything as background
+        int open_radius;        ///< Kernel size of the morphological opening (Erosion/Dilation). Parts of the mask
+                                /// that are smaller than the kernel size are removed
+        int num_final_erosions; ///< Number of consecutive morphological 5x5 erosions to apply at the end.
+                                /// Once small areas have been removed, it will let areas grow to make sure the selection
+                                /// isn't too tight
     };
 
     /// @brief Constructor

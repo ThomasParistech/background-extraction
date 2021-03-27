@@ -111,7 +111,7 @@ bool parse_command_line(int argc, char *argv[], Config &config)
 const int blur_radius_max = 30;
 const int ths_max = 40;
 const int open_radius_max = 30;
-const int num_final_dilations_max = 30;
+const int num_final_erosions_max = 30;
 
 Params params(11, 10, 0, 0);
 
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
     cv::createTrackbar("Smoothing", main_window_name, &params.blur_radius, blur_radius_max, param_cb, &display_mask_cb);
     cv::createTrackbar("Thresholding", main_window_name, &params.ths, ths_max, param_cb, &display_mask_cb);
     cv::createTrackbar("Opening", main_window_name, &params.open_radius, open_radius_max, param_cb, &display_mask_cb);
-    cv::createTrackbar("Dilating at the end", main_window_name, &params.num_final_dilations, num_final_dilations_max, param_cb, &display_mask_cb);
+    cv::createTrackbar("Eroding at the end", main_window_name, &params.num_final_erosions, num_final_erosions_max, param_cb, &display_mask_cb);
 
     cv::Mat disp_final_img;
     while (true)

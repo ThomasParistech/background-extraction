@@ -17,17 +17,17 @@ namespace bfs = boost::filesystem;
 BackgroundExtractor::ProcessingParams::ProcessingParams(int blur_radius,
                                                         int ths,
                                                         int open_radius,
-                                                        int num_final_dilations) : blur_radius(blur_radius),
-                                                                                   ths(ths),
-                                                                                   open_radius(open_radius),
-                                                                                   num_final_dilations(num_final_dilations) {}
+                                                        int num_final_erosions) : blur_radius(blur_radius),
+                                                                                  ths(ths),
+                                                                                  open_radius(open_radius),
+                                                                                  num_final_erosions(num_final_erosions) {}
 
 void BackgroundExtractor::ProcessingParams::reset()
 {
     blur_radius = -1;
     ths = -1;
     open_radius = -1;
-    num_final_dilations = -1;
+    num_final_erosions = -1;
 }
 
 BackgroundExtractor::BackgroundExtractor(float resize_factor,
@@ -149,7 +149,7 @@ void BackgroundExtractor::update_mask(const ProcessingParams &params)
     }
 
     // 3) Open and Dilate (update mask_)
-    if (has_changed || params.ths != last_params_.ths || params.open_radius != last_params_.open_radius || params.num_final_dilations != last_params_.num_final_dilations)
+    if (has_changed || params.ths != last_params_.ths || params.open_radius != last_params_.open_radius || params.num_final_erosions != last_params_.num_final_erosions)
     {
         mask_before_morph_.copyTo(mask_);
 
@@ -167,7 +167,7 @@ void BackgroundExtractor::update_mask(const ProcessingParams &params)
         const cv::Mat erosion_kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE,
                                                                  cv::Size(5, 5),
                                                                  cv::Point(1, 1));
-        for (size_t i = 0; i < params.num_final_dilations; i++)
+        for (size_t i = 0; i < params.num_final_erosions; i++)
             cv::erode(mask_, mask_, erosion_kernel);
 
         valid_mask_ = true;
