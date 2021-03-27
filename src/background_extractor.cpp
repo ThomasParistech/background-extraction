@@ -163,12 +163,12 @@ void BackgroundExtractor::update_mask(const ProcessingParams &params)
             cv::dilate(mask_, mask_, opening_kernel);
         }
 
-        // Dilate (make areas grow)
-        const cv::Mat dilating_kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE,
-                                                                  cv::Size(5, 5),
-                                                                  cv::Point(1, 1));
+        // Erosion (make areas grow)
+        const cv::Mat erosion_kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE,
+                                                                 cv::Size(5, 5),
+                                                                 cv::Point(1, 1));
         for (size_t i = 0; i < params.num_final_dilations; i++)
-            cv::erode(mask_, mask_, dilating_kernel);
+            cv::erode(mask_, mask_, erosion_kernel);
 
         valid_mask_ = true;
     }

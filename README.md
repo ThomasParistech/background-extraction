@@ -52,7 +52,7 @@ There are 4 parameters:
 - Blurring: We blur the input images before comparing them. The larger the radius of the kernel, the less noisy the mask is
 - Thresholding: We apply a threshold on the grayscale intensity of the blurred differences. A very low threshold will define everything as foreground, while a very large threshold will define everything as background
 - Opening: Kernel size of the morphological opening (Erosion/Dilation). Parts of the mask that are smaller than the kernel size are removed
-- Dilation:  Number of consecutive morphological 5x5 dilations to apply at the end. Once small areas have been removed, it will let areas grow to make sure the selection isn't too tight
+- Erosion:  Number of consecutive morphological 5x5 erosions to apply at the end. Once small areas have been removed, it will let red areas grow to make sure the selection isn't too tight
 
 ![](./images/overview_processing.gif)
 
